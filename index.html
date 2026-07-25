@@ -199,6 +199,31 @@ code{
   padding:1px 6px;border-radius:5px;color:var(--text)
 }
 
+/* ---------- trabalho ---------- */
+.job{display:grid;grid-template-columns:.95fr 1.05fr;gap:22px;align-items:start}
+@media(max-width:880px){.job{grid-template-columns:1fr}}
+.job-card{
+  background:var(--card);border:1px solid var(--border);border-radius:var(--radius);
+  padding:30px;position:relative;overflow:hidden
+}
+.job-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--accent-2)}
+.role{font-size:1.3rem;font-weight:700;letter-spacing:-.02em;margin-bottom:4px}
+.company{color:var(--accent-2);font-weight:600;font-size:.92rem;margin-bottom:16px}
+.job-card p{color:var(--muted);font-size:.94rem;margin-bottom:14px}
+.meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px;padding-top:18px;border-top:1px solid var(--border)}
+.meta span{
+  font-family:'JetBrains Mono',monospace;font-size:.72rem;color:var(--muted);
+  border:1px solid var(--border);border-radius:6px;padding:4px 9px
+}
+.kv{display:flex;flex-direction:column;gap:14px}
+.kv-item{
+  background:var(--card);border:1px solid var(--border);border-radius:13px;padding:20px 22px;
+  transition:border-color .2s,transform .2s
+}
+.kv-item:hover{border-color:color-mix(in srgb, var(--accent-2) 45%, var(--border));transform:translateX(3px)}
+.kv-item h4{font-size:1rem;font-weight:700;margin-bottom:5px;letter-spacing:-.01em}
+.kv-item p{color:var(--muted);font-size:.9rem}
+
 /* ---------- process ---------- */
 .proc{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px}
 .pcard{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:26px;transition:all .25s}
@@ -244,6 +269,7 @@ footer{
     <div class="nav-links">
       <a href="#projetos">Projetos</a>
       <a href="#detalhes">Detalhes técnicos</a>
+      <a href="#trabalho">Experiência</a>
       <a href="#processo">Processo</a>
       <a href="#contato">Contato</a>
       <button class="theme-btn" id="theme" aria-label="Alternar tema">◐</button>
@@ -256,8 +282,9 @@ footer{
     <span class="eyebrow"><span class="pulse"></span> disponível para novos projetos</span>
     <h1>Software que resolve <span class="grad">problemas reais</span>.</h1>
     <p class="lead">
-      Desenvolvedor full-stack. Construo aplicações web completas — do modelo de dados à interface —
-      com Node.js, PostgreSQL e Next.js. Cada projeto aqui nasceu de uma necessidade concreta:
+      Analista de sistemas há mais de uma década em sistemas financeiros — Delphi, Oracle e
+      integrações de pagamento que não podem falhar. Nas horas livres, construo aplicações web completas
+      com Node.js, PostgreSQL e Next.js, sempre a partir de uma necessidade concreta:
       cuidar de uma criança, organizar shows de uma banda, entender um financiamento.
     </p>
     <div class="cta">
@@ -268,9 +295,9 @@ footer{
       </a>
     </div>
     <div class="stats">
-      <div class="stat"><b>4</b><span>projetos publicados</span></div>
+      <div class="stat"><b>11 anos</b><span>desenvolvendo software</span></div>
+      <div class="stat"><b>4</b><span>projetos próprios no ar</span></div>
       <div class="stat"><b>Full-stack</b><span>back, front e banco</span></div>
-      <div class="stat"><b>Auth própria</b><span>serviço multi-tenant</span></div>
     </div>
   </div>
 </header>
@@ -278,9 +305,9 @@ footer{
 <section id="projetos">
   <div class="wrap">
     <div class="sec-head rv">
-      <span class="sec-tag">// projetos</span>
-      <h2>O que eu construí</h2>
-      <p>Quatro aplicações em produção. Três produtos e uma peça de infraestrutura que autentica todos eles.</p>
+      <span class="sec-tag">// projetos pessoais</span>
+      <h2>O que eu construí no tempo livre</h2>
+      <p>Quatro aplicações em produção, do zero: três produtos e uma peça de infraestrutura que autentica todos eles. Nenhum é exercício de tutorial — todos resolvem um problema que eu tinha.</p>
     </div>
 
     <div class="grid">
@@ -516,6 +543,75 @@ footer{
         </div>
       </details>
 
+    </div>
+  </div>
+</section>
+
+<section id="trabalho">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="sec-tag">// vida profissional</span>
+      <h2>E o que faço das 9 às 18</h2>
+      <p>
+        Os projetos acima são de tempo livre. No trabalho a stack é outra — mais antiga, mais crítica
+        e com muito mais dinheiro passando por ela.
+      </p>
+    </div>
+
+    <div class="job">
+      <div class="job-card rv">
+        <div class="role">Analista de Sistemas</div>
+        <div class="company">Grupo Posthaus</div>
+        <p>
+          Responsável pelas regras de negócio do <b>sistema financeiro</b> — contas a pagar e contas a
+          receber — em uma operação com volume alto de transações.
+        </p>
+        <p>
+          Estou na empresa desde 2010 e passei por operação, processos e BI antes de assumir
+          desenvolvimento. Conhecer o negócio por dentro mudou a forma como eu escrevo software:
+          requisito raramente chega pronto, e a maior parte do trabalho é descobrir o que o sistema
+          realmente precisa fazer.
+        </p>
+        <div class="meta">
+          <span>desde 2019 no cargo</span>
+          <span>14 anos de casa</span>
+          <span>Blumenau · SC</span>
+        </div>
+      </div>
+
+      <div class="kv">
+        <div class="kv-item rv">
+          <h4>Integrações financeiras</h4>
+          <p>Pix, boletos, DOC/TED, pagamento de tributos e Serasa Limpa Nome — conectando um sistema legado a APIs modernas, onde falha silenciosa vira prejuízo contábil. A integração de Pix que implementei e mantenho já processou <b>mais de 900 mil transações</b>.</p>
+        </div>
+        <div class="kv-item rv">
+          <h4>Legado e moderno no mesmo dia</h4>
+          <p>Delphi (7, XE3 e XE6) convivendo com Node.js. Manter software que roda há décadas e ainda assim entregar coisa nova exige respeito ao código que já existe.</p>
+        </div>
+        <div class="kv-item rv">
+          <h4>Oracle e PL/SQL</h4>
+          <p>Consistência e performance exigidas ao mesmo tempo: queries e rotinas PL/SQL que fecham com precisão de centavos e ainda assim precisam responder rápido sobre uma base que só cresce.</p>
+        </div>
+        <div class="kv-item rv">
+          <h4>BI antes de dev</h4>
+          <p>Quatro anos desenvolvendo QlikView e rotinas de ETL: indicadores para vendas, operação e negócios. Foi ali que aprendi a olhar dado com desconfiança.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="sec-head rv" style="margin-top:52px;margin-bottom:0">
+      <h2 style="font-size:1.15rem;margin-bottom:14px">Stack profissional</h2>
+      <div class="strip">
+        <span class="chip">Delphi</span>
+        <span class="chip">Oracle</span>
+        <span class="chip">PL/SQL</span>
+        <span class="chip">Node.js</span>
+        <span class="chip">JavaScript</span>
+        <span class="chip">QlikView</span>
+        <span class="chip">ETL</span>
+        <span class="chip">APIs e integrações</span>
+        <span class="chip">Análise de requisitos</span>
+      </div>
     </div>
   </div>
 </section>

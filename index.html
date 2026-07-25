@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Yuri Godoz — Desenvolvedor de Software</title>
+<meta name="description" content="Portfólio de Yuri Godoz. Aplicações web full-stack com Node.js, Prisma, PostgreSQL e Next.js: Luccare, Bandapp, Agiotapp e GlobalAuth.">
+<meta property="og:title" content="Yuri Godoz — Desenvolvedor de Software">
+<meta property="og:description" content="Aplicações web full-stack: Luccare, Bandapp, Agiotapp e GlobalAuth.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⌘</text></svg>">
+<style>
+:root{
+  --bg:#0b0f14;
+  --bg-soft:#111823;
+  --card:#141c28;
+  --card-hover:#18222f;
+  --border:#22303f;
+  --text:#e8eef5;
+  --muted:#8ba0b6;
+  --accent:#5eead4;
+  --accent-2:#818cf8;
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 12px 32px -12px rgba(0,0,0,.6);
+  --radius:16px;
+  --max:1120px;
+}
+:root[data-theme="light"]{
+  --bg:#f7f9fb;
+  --bg-soft:#ffffff;
+  --card:#ffffff;
+  --card-hover:#ffffff;
+  --border:#e2e8f0;
+  --text:#0f172a;
+  --muted:#5b6b7f;
+  --accent:#0d9488;
+  --accent-2:#4f46e5;
+  --shadow:0 1px 2px rgba(15,23,42,.06),0 12px 32px -16px rgba(15,23,42,.18);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:'Inter',system-ui,-apple-system,sans-serif;
+  line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+body::before{
+  content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
+  background:
+    radial-gradient(600px 400px at 12% -5%, color-mix(in srgb, var(--accent) 12%, transparent), transparent 70%),
+    radial-gradient(600px 400px at 88% 8%, color-mix(in srgb, var(--accent-2) 12%, transparent), transparent 70%);
+}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 24px;position:relative;z-index:1}
+a{color:inherit;text-decoration:none}
+
+/* ---------- nav ---------- */
+nav{
+  position:sticky;top:0;z-index:50;
+  backdrop-filter:blur(14px);
+  background:color-mix(in srgb, var(--bg) 82%, transparent);
+  border-bottom:1px solid transparent;
+  transition:border-color .3s;
+}
+nav.scrolled{border-bottom-color:var(--border)}
+.nav-in{display:flex;align-items:center;justify-content:space-between;height:64px}
+.logo{font-weight:800;letter-spacing:-.02em;font-size:1.05rem;display:flex;align-items:center;gap:9px}
+.logo .dot{width:9px;height:9px;border-radius:50%;background:var(--accent);box-shadow:0 0 12px var(--accent)}
+.nav-links{display:flex;align-items:center;gap:28px}
+.nav-links a{color:var(--muted);font-size:.9rem;font-weight:500;transition:color .2s}
+.nav-links a:hover{color:var(--text)}
+.theme-btn{
+  background:var(--card);border:1px solid var(--border);color:var(--muted);
+  width:36px;height:36px;border-radius:10px;cursor:pointer;display:grid;place-items:center;
+  transition:all .2s;font-size:1rem
+}
+.theme-btn:hover{color:var(--text);border-color:var(--accent)}
+@media(max-width:720px){.nav-links a{display:none}}
+
+/* ---------- hero ---------- */
+header{padding:110px 0 90px}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:8px;
+  font-family:'JetBrains Mono',monospace;font-size:.78rem;
+  color:var(--accent);border:1px solid color-mix(in srgb, var(--accent) 35%, transparent);
+  background:color-mix(in srgb, var(--accent) 8%, transparent);
+  padding:5px 13px;border-radius:999px;margin-bottom:26px
+}
+.pulse{width:6px;height:6px;border-radius:50%;background:var(--accent);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+h1{
+  font-size:clamp(2.4rem,6vw,4rem);line-height:1.05;letter-spacing:-.035em;
+  font-weight:800;margin-bottom:24px;max-width:16ch
+}
+h1 .grad{
+  background:linear-gradient(100deg,var(--accent),var(--accent-2));
+  -webkit-background-clip:text;background-clip:text;color:transparent
+}
+.lead{font-size:clamp(1.02rem,2.2vw,1.2rem);color:var(--muted);max-width:60ch;margin-bottom:36px}
+.cta{display:flex;flex-wrap:wrap;gap:12px}
+.btn{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:11px 20px;border-radius:11px;font-weight:600;font-size:.92rem;
+  border:1px solid var(--border);background:var(--card);color:var(--text);
+  transition:all .2s;cursor:pointer
+}
+.btn:hover{transform:translateY(-2px);box-shadow:var(--shadow);border-color:color-mix(in srgb, var(--accent) 50%, var(--border))}
+.btn.primary{background:var(--accent);color:#04231f;border-color:var(--accent)}
+:root[data-theme="light"] .btn.primary{color:#fff}
+.btn.primary:hover{filter:brightness(1.08)}
+
+.stats{display:flex;flex-wrap:wrap;gap:44px;margin-top:64px;padding-top:36px;border-top:1px solid var(--border)}
+.stat b{display:block;font-size:1.7rem;font-weight:800;letter-spacing:-.02em}
+.stat span{font-size:.82rem;color:var(--muted)}
+
+/* ---------- sections ---------- */
+section{padding:80px 0;position:relative;z-index:1}
+.sec-head{margin-bottom:44px;max-width:62ch}
+.sec-tag{font-family:'JetBrains Mono',monospace;font-size:.78rem;color:var(--accent);margin-bottom:12px;display:block}
+h2{font-size:clamp(1.7rem,3.6vw,2.3rem);letter-spacing:-.03em;font-weight:800;margin-bottom:12px}
+.sec-head p{color:var(--muted)}
+
+/* ---------- project cards ---------- */
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(310px,1fr));gap:20px}
+.card{
+  background:var(--card);border:1px solid var(--border);border-radius:var(--radius);
+  padding:28px;display:flex;flex-direction:column;position:relative;overflow:hidden;
+  transition:transform .25s cubic-bezier(.2,.7,.3,1),border-color .25s,box-shadow .25s
+}
+.card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:3px;
+  background:var(--pc,var(--accent));opacity:.85
+}
+.card:hover{transform:translateY(-5px);border-color:color-mix(in srgb, var(--pc) 45%, var(--border));box-shadow:var(--shadow)}
+.card-top{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;margin-bottom:6px}
+.ico{
+  width:44px;height:44px;border-radius:12px;display:grid;place-items:center;font-size:1.35rem;
+  background:color-mix(in srgb, var(--pc) 14%, transparent);
+  border:1px solid color-mix(in srgb, var(--pc) 30%, transparent);flex-shrink:0
+}
+.badge{
+  font-family:'JetBrains Mono',monospace;font-size:.68rem;text-transform:uppercase;letter-spacing:.06em;
+  padding:4px 9px;border-radius:6px;color:var(--muted);border:1px solid var(--border);white-space:nowrap
+}
+.badge.live{color:var(--accent);border-color:color-mix(in srgb, var(--accent) 40%, transparent)}
+.card h3{font-size:1.28rem;font-weight:700;letter-spacing:-.02em;margin:14px 0 4px}
+.card .tagline{font-size:.83rem;color:var(--pc);font-weight:600;margin-bottom:12px}
+.card p.desc{color:var(--muted);font-size:.93rem;flex:1;margin-bottom:18px}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:20px}
+.tag{
+  font-family:'JetBrains Mono',monospace;font-size:.72rem;color:var(--muted);
+  background:var(--bg-soft);border:1px solid var(--border);padding:3px 9px;border-radius:6px
+}
+.card-links{display:flex;gap:10px;flex-wrap:wrap}
+.lnk{
+  font-size:.85rem;font-weight:600;display:inline-flex;align-items:center;gap:6px;
+  padding:8px 14px;border-radius:9px;border:1px solid var(--border);transition:all .2s
+}
+.lnk.fill{background:color-mix(in srgb, var(--pc) 15%, transparent);border-color:color-mix(in srgb, var(--pc) 35%, transparent);color:var(--pc)}
+.lnk:hover{border-color:var(--pc);transform:translateY(-1px)}
+.lnk svg{width:14px;height:14px}
+
+/* ---------- deep dive ---------- */
+.dive{display:flex;flex-direction:column;gap:16px}
+details.pj{
+  background:var(--card);border:1px solid var(--border);border-radius:var(--radius);
+  overflow:hidden;transition:border-color .2s
+}
+details.pj[open]{border-color:color-mix(in srgb, var(--pc) 40%, var(--border))}
+details.pj summary{
+  padding:22px 26px;cursor:pointer;display:flex;align-items:center;gap:14px;list-style:none;
+  font-weight:700;font-size:1.05rem;letter-spacing:-.01em
+}
+details.pj summary::-webkit-details-marker{display:none}
+summary .chev{margin-left:auto;color:var(--muted);transition:transform .25s;font-size:.9rem}
+details.pj[open] summary .chev{transform:rotate(90deg)}
+summary .sq{width:10px;height:10px;border-radius:3px;background:var(--pc)}
+summary small{font-weight:500;color:var(--muted);font-size:.85rem;margin-left:4px}
+@media(max-width:600px){summary small{display:none}}
+.pj-body{padding:0 26px 26px;border-top:1px solid var(--border);padding-top:22px;margin-top:2px}
+.pj-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+@media(max-width:760px){.pj-grid{grid-template-columns:1fr;gap:22px}}
+.blk h4{
+  font-family:'JetBrains Mono',monospace;font-size:.74rem;text-transform:uppercase;
+  letter-spacing:.08em;color:var(--pc);margin-bottom:10px;font-weight:500
+}
+.blk p{color:var(--muted);font-size:.92rem}
+.blk ul{list-style:none;display:flex;flex-direction:column;gap:8px}
+.blk li{color:var(--muted);font-size:.92rem;padding-left:18px;position:relative}
+.blk li::before{content:'▸';position:absolute;left:0;color:var(--pc);font-size:.8rem}
+.stack-row{display:flex;flex-wrap:wrap;gap:6px}
+code{
+  font-family:'JetBrains Mono',monospace;font-size:.85em;
+  background:var(--bg-soft);border:1px solid var(--border);
+  padding:1px 6px;border-radius:5px;color:var(--text)
+}
+
+/* ---------- process ---------- */
+.proc{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px}
+.pcard{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:26px;transition:all .25s}
+.pcard:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
+.pnum{font-family:'JetBrains Mono',monospace;font-size:.8rem;color:var(--accent);margin-bottom:12px;display:block}
+.pcard h3{font-size:1.05rem;font-weight:700;margin-bottom:8px;letter-spacing:-.01em}
+.pcard p{color:var(--muted);font-size:.9rem}
+
+/* ---------- stack strip ---------- */
+.strip{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}
+.chip{
+  display:inline-flex;align-items:center;gap:8px;padding:9px 15px;border-radius:11px;
+  background:var(--card);border:1px solid var(--border);font-size:.87rem;font-weight:500;
+  transition:all .2s
+}
+.chip:hover{border-color:var(--accent);transform:translateY(-2px)}
+
+/* ---------- contact ---------- */
+.contact-box{
+  background:linear-gradient(135deg, color-mix(in srgb, var(--accent) 9%, var(--card)), color-mix(in srgb, var(--accent-2) 9%, var(--card)));
+  border:1px solid var(--border);border-radius:22px;padding:52px 40px;text-align:center
+}
+.contact-box h2{margin-bottom:14px}
+.contact-box p{color:var(--muted);max-width:52ch;margin:0 auto 30px}
+.contact-links{display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
+
+footer{
+  border-top:1px solid var(--border);padding:32px 0;margin-top:60px;
+  color:var(--muted);font-size:.85rem;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px
+}
+
+/* ---------- reveal ---------- */
+.rv{opacity:0;transform:translateY(22px);transition:opacity .6s ease,transform .6s cubic-bezier(.2,.7,.3,1)}
+.rv.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.rv{opacity:1;transform:none}*{transition:none!important;animation:none!important}}
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <div class="wrap nav-in">
+    <a href="#" class="logo"><span class="dot"></span>yuri godoz</a>
+    <div class="nav-links">
+      <a href="#projetos">Projetos</a>
+      <a href="#detalhes">Detalhes técnicos</a>
+      <a href="#processo">Processo</a>
+      <a href="#contato">Contato</a>
+      <button class="theme-btn" id="theme" aria-label="Alternar tema">◐</button>
+    </div>
+  </div>
+</nav>
+
+<header>
+  <div class="wrap">
+    <span class="eyebrow"><span class="pulse"></span> disponível para novos projetos</span>
+    <h1>Software que resolve <span class="grad">problemas reais</span>.</h1>
+    <p class="lead">
+      Desenvolvedor full-stack. Construo aplicações web completas — do modelo de dados à interface —
+      com Node.js, PostgreSQL e Next.js. Cada projeto aqui nasceu de uma necessidade concreta:
+      cuidar de uma criança, organizar shows de uma banda, entender um financiamento.
+    </p>
+    <div class="cta">
+      <a href="#projetos" class="btn primary">Ver projetos →</a>
+      <a href="https://github.com/yurigodoz" target="_blank" rel="noopener" class="btn">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.2 11.39.6.11.82-.26.82-.58v-2.03c-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.09-.75.08-.73.08-.73 1.2.08 1.84 1.24 1.84 1.24 1.07 1.83 2.81 1.3 3.5.99.11-.78.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.11-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 6.01 0c2.29-1.55 3.3-1.23 3.3-1.23.65 1.66.24 2.88.12 3.18.77.84 1.23 1.91 1.23 3.22 0 4.61-2.8 5.63-5.48 5.92.43.37.81 1.1.81 2.22v3.29c0 .32.22.7.83.58A12 12 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+        GitHub
+      </a>
+    </div>
+    <div class="stats">
+      <div class="stat"><b>4</b><span>projetos publicados</span></div>
+      <div class="stat"><b>Full-stack</b><span>back, front e banco</span></div>
+      <div class="stat"><b>SSO próprio</b><span>auth centralizada</span></div>
+    </div>
+  </div>
+</header>
+
+<section id="projetos">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="sec-tag">// projetos</span>
+      <h2>O que eu construí</h2>
+      <p>Quatro aplicações em produção. Três produtos e uma peça de infraestrutura que autentica todos eles.</p>
+    </div>
+
+    <div class="grid">
+
+      <article class="card rv" style="--pc:#f97316">
+        <div class="card-top">
+          <div class="ico">🧡</div>
+          <span class="badge live">no ar</span>
+        </div>
+        <h3>Luccare</h3>
+        <div class="tagline">Rotinas de cuidado</div>
+        <p class="desc">
+          Organiza a rotina diária de pessoas com necessidades especiais — medicações, alimentação, terapias —
+          compartilhada entre pais e cuidadores, com histórico completo de execução e alertas de atraso.
+          Nasceu do cuidado real com o Lucca.
+        </p>
+        <div class="tags">
+          <span class="tag">Next.js 16</span><span class="tag">Express</span><span class="tag">Prisma</span><span class="tag">PostgreSQL</span>
+        </div>
+        <div class="card-links">
+          <a href="#" data-app="luccare" class="lnk fill" target="_blank" rel="noopener">Acessar app ↗</a>
+          <a href="https://github.com/yurigodoz/Luccare" class="lnk" target="_blank" rel="noopener">Código</a>
+        </div>
+      </article>
+
+      <article class="card rv" style="--pc:#a855f7">
+        <div class="card-top">
+          <div class="ico">🎸</div>
+          <span class="badge live">no ar</span>
+        </div>
+        <h3>Bandapp</h3>
+        <div class="tagline">Gestão de shows multi-artista</div>
+        <p class="desc">
+          Do primeiro contato do cliente até o dia do evento. Funil de vendas que vira gestão operacional,
+          com calendário central, checklists e alertas de prazo. Cada banda é um tenant isolado,
+          com permissões granulares por vínculo.
+        </p>
+        <div class="tags">
+          <span class="tag">Multi-tenant</span><span class="tag">Next.js 16</span><span class="tag">Prisma</span><span class="tag">Auditoria</span>
+        </div>
+        <div class="card-links">
+          <a href="#" data-app="bandapp" class="lnk fill" target="_blank" rel="noopener">Acessar app ↗</a>
+          <a href="https://github.com/yurigodoz/Bandapp" class="lnk" target="_blank" rel="noopener">Código</a>
+        </div>
+      </article>
+
+      <article class="card rv" style="--pc:#22c55e">
+        <div class="card-top">
+          <div class="ico">📊</div>
+          <span class="badge live">no ar</span>
+        </div>
+        <h3>Agiotapp</h3>
+        <div class="tagline">Memória de cálculo de financiamentos</div>
+        <p class="desc">
+          Mostra parcela por parcela o que o banco não mostra: saldo devedor, correção monetária, juros,
+          amortização e seguro. Suporta SAC e PRICE, indexação a TR, IPCA ou taxa personalizada,
+          com aritmética decimal precisa.
+        </p>
+        <div class="tags">
+          <span class="tag">SAC / PRICE</span><span class="tag">Decimal.js</span><span class="tag">130 testes</span><span class="tag">Next.js 16</span>
+        </div>
+        <div class="card-links">
+          <a href="#" data-app="agiotapp" class="lnk fill" target="_blank" rel="noopener">Acessar app ↗</a>
+          <a href="https://github.com/yurigodoz/Agiotapp" class="lnk" target="_blank" rel="noopener">Código</a>
+        </div>
+      </article>
+
+      <article class="card rv" style="--pc:#38bdf8">
+        <div class="card-top">
+          <div class="ico">🔐</div>
+          <span class="badge">infraestrutura</span>
+        </div>
+        <h3>GlobalAuth</h3>
+        <div class="tagline">Serviço de autenticação central</div>
+        <p class="desc">
+          O SSO que autentica todos os apps acima. JWT com rotação de refresh tokens, isolamento por
+          aplicação (cada app tem seu próprio segredo e TTL), painel administrativo e documentação
+          Swagger. Nenhum app armazena senha.
+        </p>
+        <div class="tags">
+          <span class="tag">JWT</span><span class="tag">Multi-app</span><span class="tag">Swagger</span><span class="tag">Node.js</span>
+        </div>
+        <div class="card-links">
+          <a href="#" data-app="globalauth" class="lnk fill" target="_blank" rel="noopener">Documentação ↗</a>
+          <a href="https://github.com/yurigodoz/GlobalAuth" class="lnk" target="_blank" rel="noopener">Código</a>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<section id="detalhes">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="sec-tag">// engenharia</span>
+      <h2>Como cada um foi construído</h2>
+      <p>Para quem quer olhar por dentro: decisões de arquitetura, problemas difíceis e o que aprendi em cada projeto.</p>
+    </div>
+
+    <div class="dive">
+
+      <details class="pj rv" style="--pc:#f97316" open>
+        <summary><span class="sq"></span>Luccare <small>— rotinas recorrentes, N:N com papéis</small><span class="chev">›</span></summary>
+        <div class="pj-body">
+          <div class="pj-grid">
+            <div class="blk">
+              <h4>O problema</h4>
+              <p>Cuidar de uma criança com necessidades especiais envolve várias pessoas — pai, mãe, cuidador, terapeuta — e uma rotina que não pode falhar. Sem um lugar central, cada um anota do seu jeito e ninguém sabe se o remédio das 14h foi dado.</p>
+            </div>
+            <div class="blk">
+              <h4>A solução</h4>
+              <ul>
+                <li>Rotinas recorrentes com registro de execução e histórico</li>
+                <li>Dependentes compartilhados entre responsáveis (N:N com papéis)</li>
+                <li>Controle de acesso por dependente, não só por usuário</li>
+                <li>Verificação de e-mail e recuperação de senha</li>
+              </ul>
+            </div>
+            <div class="blk">
+              <h4>Arquitetura</h4>
+              <p>Monorepo com <code>backend/</code> e <code>frontend/</code>. Backend em camadas: Controller → Service → Repository → Prisma → PostgreSQL. Rotas protegidas por middleware JWT. Versionado com Semantic Versioning (v1.0.0).</p>
+            </div>
+            <div class="blk">
+              <h4>Stack</h4>
+              <div class="stack-row">
+                <span class="tag">Next.js 16</span><span class="tag">React 19</span><span class="tag">Tailwind 4</span>
+                <span class="tag">Node.js</span><span class="tag">Express 5</span><span class="tag">Prisma 6</span>
+                <span class="tag">PostgreSQL</span><span class="tag">JWT</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </details>
+
+      <details class="pj rv" style="--pc:#a855f7">
+        <summary><span class="sq"></span>Bandapp <small>— multi-tenant, permissões granulares, auditoria</small><span class="chev">›</span></summary>
+        <div class="pj-body">
+          <div class="pj-grid">
+            <div class="blk">
+              <h4>O problema</h4>
+              <p>Banda vive de show, e show tem um ciclo longo: proposta, negociação, contrato, produção, dia do evento. Isso costuma morar em grupos de WhatsApp e planilhas soltas — prazos passam, datas conflitam.</p>
+            </div>
+            <div class="blk">
+              <h4>A solução</h4>
+              <ul>
+                <li>Um registro único de <b>Show</b> atravessa as 5 fases do ciclo</li>
+                <li>Calendário central mostra datas em negociação e fechadas</li>
+                <li>Cada banda é um tenant: dados totalmente isolados</li>
+                <li>Checklists e alertas automáticos de prazo</li>
+              </ul>
+            </div>
+            <div class="blk">
+              <h4>Decisões difíceis</h4>
+              <p>Autorização por <b>permissões granulares</b> em vez de papéis fixos — perfis são só conjuntos nomeados de permissões. Identidade fica no GlobalAuth; autorização por banda é responsabilidade do app. Auditoria e observabilidade desde a v1.</p>
+            </div>
+            <div class="blk">
+              <h4>Stack</h4>
+              <div class="stack-row">
+                <span class="tag">Next.js 16</span><span class="tag">React 19</span><span class="tag">Tailwind 4</span>
+                <span class="tag">Express</span><span class="tag">Prisma</span><span class="tag">PostgreSQL</span>
+                <span class="tag">GlobalAuth SSO</span><span class="tag">Swagger</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </details>
+
+      <details class="pj rv" style="--pc:#22c55e">
+        <summary><span class="sq"></span>Agiotapp <small>— motor de cálculo financeiro, 130 testes</small><span class="chev">›</span></summary>
+        <div class="pj-body">
+          <div class="pj-grid">
+            <div class="blk">
+              <h4>O problema</h4>
+              <p>Quem tem financiamento imobiliário raramente entende a própria parcela. O extrato do banco mostra o valor, não a conta: quanto foi correção monetária, quanto foi juro, quanto realmente abateu a dívida.</p>
+            </div>
+            <div class="blk">
+              <h4>A solução</h4>
+              <ul>
+                <li>Memória de cálculo completa, do mês 1 ao fim do contrato</li>
+                <li>SAC e PRICE, indexado a TR, IPCA ou taxa personalizada</li>
+                <li>Projeção dos meses futuros com forward-fill do último índice</li>
+                <li>Recálculo em cascata quando um índice real é publicado</li>
+              </ul>
+            </div>
+            <div class="blk">
+              <h4>Cuidados de engenharia</h4>
+              <p>Aritmética decimal precisa (nada de float nativo) — em dinheiro, erro de arredondamento vira bug de confiança. Respostas 404 idênticas para "não existe" e "é de outro usuário", para não vazar existência de recurso. 130 testes de backend cobrindo o motor de cálculo.</p>
+            </div>
+            <div class="blk">
+              <h4>Stack</h4>
+              <div class="stack-row">
+                <span class="tag">Next.js 16</span><span class="tag">React 19</span><span class="tag">Tailwind 4</span>
+                <span class="tag">Express</span><span class="tag">Prisma</span><span class="tag">PostgreSQL</span>
+                <span class="tag">GlobalAuth SSO</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </details>
+
+      <details class="pj rv" style="--pc:#38bdf8">
+        <summary><span class="sq"></span>GlobalAuth <small>— o SSO que sustenta os outros três</small><span class="chev">›</span></summary>
+        <div class="pj-body">
+          <div class="pj-grid">
+            <div class="blk">
+              <h4>O problema</h4>
+              <p>Três apps independentes, três telas de login, três tabelas de senha para manter seguras. Reescrever autenticação a cada projeto é retrabalho — e cada cópia é mais uma superfície de ataque.</p>
+            </div>
+            <div class="blk">
+              <h4>A solução</h4>
+              <ul>
+                <li>Um serviço central de identidade para todos os apps</li>
+                <li>Isolamento por aplicação: cada app tem <code>jwtSecret</code> e TTL próprios</li>
+                <li>Refresh tokens com rotação</li>
+                <li>Validação local do token no app — sem chamada de rede por request</li>
+                <li>Painel administrativo e API documentada em Swagger</li>
+              </ul>
+            </div>
+            <div class="blk">
+              <h4>O padrão que surgiu</h4>
+              <p>Cada app mantém um <b>shadow user</b> local sem senha, referenciando a identidade do GlobalAuth. Identidade é centralizada; autorização continua local, porque só o app sabe o que cada usuário pode fazer dentro dele.</p>
+            </div>
+            <div class="blk">
+              <h4>Stack</h4>
+              <div class="stack-row">
+                <span class="tag">Node.js</span><span class="tag">Express</span><span class="tag">Prisma</span>
+                <span class="tag">PostgreSQL</span><span class="tag">JWT</span><span class="tag">Swagger</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </details>
+
+    </div>
+  </div>
+</section>
+
+<section id="processo">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="sec-tag">// processo</span>
+      <h2>Como eu trabalho</h2>
+      <p>Um padrão que se repete nos quatro projetos — e que é a razão de eles se parecerem por dentro.</p>
+    </div>
+    <div class="proc">
+      <div class="pcard rv">
+        <span class="pnum">01</span>
+        <h3>Especificação antes do código</h3>
+        <p>Todo projeto começa com requisitos escritos, modelo de dados e decisões registradas. Ambiguidade resolvida no documento custa muito menos que resolvida em produção.</p>
+      </div>
+      <div class="pcard rv">
+        <span class="pnum">02</span>
+        <h3>Arquitetura em camadas</h3>
+        <p>Controller → Service → Repository → ORM. Regra de negócio não mora no controller, e SQL não vaza para o service. Previsível de ler e barato de testar.</p>
+      </div>
+      <div class="pcard rv">
+        <span class="pnum">03</span>
+        <h3>Segurança por padrão</h3>
+        <p>Autenticação centralizada, rotas protegidas por middleware, respostas que não vazam existência de recurso, senhas fora dos apps de produto.</p>
+      </div>
+      <div class="pcard rv">
+        <span class="pnum">04</span>
+        <h3>Testes e verificação real</h3>
+        <p>Testes automatizados no backend e verificação ponta a ponta contra a stack rodando de verdade — banco, auth e frontend juntos, não só mocks.</p>
+      </div>
+    </div>
+
+    <div class="sec-head rv" style="margin-top:64px;margin-bottom:0">
+      <span class="sec-tag">// stack</span>
+      <h2>Ferramentas do dia a dia</h2>
+      <div class="strip">
+        <span class="chip">JavaScript</span>
+        <span class="chip">Node.js</span>
+        <span class="chip">Express</span>
+        <span class="chip">React 19</span>
+        <span class="chip">Next.js 16</span>
+        <span class="chip">Tailwind CSS 4</span>
+        <span class="chip">Prisma ORM</span>
+        <span class="chip">PostgreSQL</span>
+        <span class="chip">JWT</span>
+        <span class="chip">Swagger / OpenAPI</span>
+        <span class="chip">Git</span>
+        <span class="chip">Linux / VPS</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contato">
+  <div class="wrap">
+    <div class="contact-box rv">
+      <h2>Vamos conversar</h2>
+      <p>Aberto a oportunidades, freelas e boas conversas sobre arquitetura. Costumo responder rápido.</p>
+      <div class="contact-links">
+        <a href="mailto:yuri@godoz.net" class="btn primary">yuri@godoz.net</a>
+        <a href="https://github.com/yurigodoz" target="_blank" rel="noopener" class="btn">GitHub</a>
+        <a href="#" data-app="linkedin" class="btn" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap" style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;width:100%">
+    <span>© <span id="yr"></span> Yuri Godoz</span>
+    <span style="font-family:'JetBrains Mono',monospace;font-size:.8rem">HTML, CSS e JS — sem framework</span>
+  </div>
+</footer>
+
+<script>
+// ---- URLs dos apps: troque os valores abaixo pelos domínios reais ----
+const LINKS = {
+  luccare:    "https://luccare.godoz.dev.br",
+  bandapp:    "https://bandapp.godoz.dev.br",
+  agiotapp:   "https://agiotapp.godoz.dev.br",
+  linkedin:   "https://www.linkedin.com/in/yurigodoz/"
+  // globalauth: sem URL pública — o botão "Documentação" some sozinho
+};
+document.querySelectorAll('[data-app]').forEach(a => {
+  const url = LINKS[a.dataset.app];
+  if (url) a.href = url;
+  else { a.style.display = 'none'; }
+});
+
+// ---- tema ----
+const root = document.documentElement;
+const saved = (() => { try { return localStorage.getItem('theme'); } catch(e){ return null; } })();
+if (saved) root.dataset.theme = saved;
+function toggle(){
+  const next = root.dataset.theme === 'light' ? 'dark' : 'light';
+  root.dataset.theme = next;
+  try { localStorage.setItem('theme', next); } catch(e){}
+}
+document.getElementById('theme').addEventListener('click', toggle);
+
+// ---- nav border on scroll ----
+const nav = document.getElementById('nav');
+addEventListener('scroll', () => nav.classList.toggle('scrolled', scrollY > 10), {passive:true});
+
+// ---- reveal on scroll ----
+const io = new IntersectionObserver((entries) => {
+  entries.forEach((e, i) => {
+    if (e.isIntersecting) {
+      e.target.style.transitionDelay = Math.min(i * 70, 280) + 'ms';
+      e.target.classList.add('in');
+      io.unobserve(e.target);
+    }
+  });
+}, {threshold:.12, rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.rv').forEach(el => io.observe(el));
+
+document.getElementById('yr').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>

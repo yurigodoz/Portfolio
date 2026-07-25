@@ -270,7 +270,7 @@ footer{
     <div class="stats">
       <div class="stat"><b>4</b><span>projetos publicados</span></div>
       <div class="stat"><b>Full-stack</b><span>back, front e banco</span></div>
-      <div class="stat"><b>SSO próprio</b><span>auth centralizada</span></div>
+      <div class="stat"><b>Auth própria</b><span>serviço multi-tenant</span></div>
     </div>
   </div>
 </header>
@@ -354,11 +354,11 @@ footer{
           <span class="badge">infraestrutura</span>
         </div>
         <h3>GlobalAuth</h3>
-        <div class="tagline">Serviço de autenticação central</div>
+        <div class="tagline">Autenticação como serviço</div>
         <p class="desc">
-          O SSO que autentica todos os apps acima. JWT com rotação de refresh tokens, isolamento por
-          aplicação (cada app tem seu próprio segredo e TTL), painel administrativo e documentação
-          Swagger. Nenhum app armazena senha.
+          Um único serviço de autenticação para os três apps — mas com base de usuários isolada por
+          aplicação: cada app tem seu próprio cadastro, segredo JWT e TTL. Refresh tokens com rotação,
+          painel administrativo e API documentada. Nenhum app de produto armazena senha.
         </p>
         <div class="tags">
           <span class="tag">JWT</span><span class="tag">Multi-app</span><span class="tag">Swagger</span><span class="tag">Node.js</span>
@@ -442,7 +442,7 @@ footer{
               <div class="stack-row">
                 <span class="tag">Next.js 16</span><span class="tag">React 19</span><span class="tag">Tailwind 4</span>
                 <span class="tag">Express</span><span class="tag">Prisma</span><span class="tag">PostgreSQL</span>
-                <span class="tag">GlobalAuth SSO</span><span class="tag">Swagger</span>
+                <span class="tag">GlobalAuth</span><span class="tag">Swagger</span>
               </div>
             </div>
           </div>
@@ -475,7 +475,7 @@ footer{
               <div class="stack-row">
                 <span class="tag">Next.js 16</span><span class="tag">React 19</span><span class="tag">Tailwind 4</span>
                 <span class="tag">Express</span><span class="tag">Prisma</span><span class="tag">PostgreSQL</span>
-                <span class="tag">GlobalAuth SSO</span>
+                <span class="tag">GlobalAuth</span>
               </div>
             </div>
           </div>
@@ -483,7 +483,7 @@ footer{
       </details>
 
       <details class="pj rv" style="--pc:#38bdf8">
-        <summary><span class="sq"></span>GlobalAuth <small>— o SSO que sustenta os outros três</small><span class="chev">›</span></summary>
+        <summary><span class="sq"></span>GlobalAuth <small>— o serviço de auth que sustenta os outros três</small><span class="chev">›</span></summary>
         <div class="pj-body">
           <div class="pj-grid">
             <div class="blk">
@@ -493,8 +493,9 @@ footer{
             <div class="blk">
               <h4>A solução</h4>
               <ul>
-                <li>Um serviço central de identidade para todos os apps</li>
-                <li>Isolamento por aplicação: cada app tem <code>jwtSecret</code> e TTL próprios</li>
+                <li>Um serviço de autenticação reaproveitado por todos os apps</li>
+                <li>Cada app é um tenant: base de usuários, <code>jwtSecret</code> e TTL próprios</li>
+                <li>Nada de conta compartilhada — o cadastro de um app não existe no outro</li>
                 <li>Refresh tokens com rotação</li>
                 <li>Validação local do token no app — sem chamada de rede por request</li>
                 <li>Painel administrativo e API documentada em Swagger</li>
@@ -502,7 +503,7 @@ footer{
             </div>
             <div class="blk">
               <h4>O padrão que surgiu</h4>
-              <p>Cada app mantém um <b>shadow user</b> local sem senha, referenciando a identidade do GlobalAuth. Identidade é centralizada; autorização continua local, porque só o app sabe o que cada usuário pode fazer dentro dele.</p>
+              <p>Cada app mantém um <b>shadow user</b> local sem senha, referenciando o usuário no GlobalAuth. O que é compartilhado é a <b>infraestrutura</b> de autenticação, não a conta: o serviço é um só, as bases de usuário são separadas. Autorização também continua local — só o app sabe o que cada usuário pode fazer dentro dele.</p>
             </div>
             <div class="blk">
               <h4>Stack</h4>
@@ -540,7 +541,7 @@ footer{
       <div class="pcard rv">
         <span class="pnum">03</span>
         <h3>Segurança por padrão</h3>
-        <p>Autenticação centralizada, rotas protegidas por middleware, respostas que não vazam existência de recurso, senhas fora dos apps de produto.</p>
+        <p>Autenticação em serviço dedicado, rotas protegidas por middleware, respostas que não vazam existência de recurso, senhas fora dos apps de produto.</p>
       </div>
       <div class="pcard rv">
         <span class="pnum">04</span>

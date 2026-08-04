@@ -4,12 +4,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Yuri Tuan Godoz — Desenvolvedor de Software | Node.js, Delphi e Oracle</title>
-<meta name="description" content="Yuri Godoz, analista de sistemas em Indaial/SC. Mais de 10 anos desenvolvendo com Delphi, Oracle e Node.js, e projetos próprios em Next.js: Luccare, Bandapp e Agiotapp.">
+<meta name="description" content="Yuri Godoz, analista de sistemas em Indaial/SC. Mais de 10 anos desenvolvendo com Delphi, Oracle e Node.js, e projetos próprios em Next.js: Luccare, Bandapp, Agiotapp e Afinador.">
 <link rel="canonical" href="https://godoz.net/">
 <meta name="author" content="Yuri Godoz">
 <meta name="robots" content="index, follow">
 <meta property="og:title" content="Yuri Godoz — Desenvolvedor de Software">
-<meta property="og:description" content="Analista de sistemas há mais de uma década com Delphi, Oracle e Node.js. Projetos próprios: Luccare, Bandapp, Agiotapp e GlobalAuth.">
+<meta property="og:description" content="Analista de sistemas há mais de uma década com Delphi, Oracle e Node.js. Projetos próprios: Luccare, Bandapp, Agiotapp, Afinador e GlobalAuth.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://godoz.net/">
 <meta property="og:locale" content="pt_BR">
@@ -21,7 +21,7 @@
 <meta name="twitter:site" content="@yurigodoz">
 <meta name="twitter:creator" content="@yurigodoz">
 <meta name="twitter:title" content="Yuri Godoz — Desenvolvedor de Software">
-<meta name="twitter:description" content="Analista de sistemas há mais de uma década com Delphi, Oracle e Node.js. Projetos próprios: Luccare, Bandapp, Agiotapp e GlobalAuth.">
+<meta name="twitter:description" content="Analista de sistemas há mais de uma década com Delphi, Oracle e Node.js. Projetos próprios: Luccare, Bandapp, Agiotapp, Afinador e GlobalAuth.">
 <meta name="twitter:image" content="https://godoz.net/og-image.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -340,7 +340,7 @@ footer{
     </div>
     <div class="stats">
       <div class="stat"><b>11 anos</b><span>desenvolvendo software</span></div>
-      <div class="stat"><b>4</b><span>projetos próprios no ar</span></div>
+      <div class="stat"><b>5</b><span>projetos próprios no ar</span></div>
       <div class="stat"><b>Full-stack</b><span>back, front e banco</span></div>
     </div>
   </div>
@@ -351,7 +351,7 @@ footer{
     <div class="sec-head rv">
       <span class="sec-tag">// projetos pessoais</span>
       <h2>O que eu construí no tempo livre</h2>
-      <p>Quatro aplicações em produção, do zero: três produtos e uma peça de infraestrutura que autentica todos eles. Nenhum é exercício de tutorial — todos resolvem um problema que eu tinha.</p>
+      <p>Cinco aplicações em produção, do zero: quatro produtos e uma peça de infraestrutura que autentica os que precisam de login. Nenhum é exercício de tutorial — todos resolvem um problema que eu tinha.</p>
     </div>
 
     <div class="grid">
@@ -416,6 +416,27 @@ footer{
         <div class="card-links">
           <a href="#" data-app="agiotapp" class="lnk fill" target="_blank" rel="noopener">Acessar app ↗</a>
           <a href="https://github.com/yurigodoz/Agiotapp" class="lnk" target="_blank" rel="noopener">Código</a>
+        </div>
+      </article>
+
+      <article class="card rv" style="--pc:#eab308">
+        <div class="card-top">
+          <div class="ico">🎵</div>
+          <span class="badge live">no ar</span>
+        </div>
+        <h3>Afinador</h3>
+        <div class="tagline">Afinador cromático no navegador</div>
+        <p class="desc">
+          Afina violão, guitarra e baixo pelo microfone do aparelho — sem instalar nada e sem
+          cadastro. Reconhece a corda sozinho e diz se é para apertar ou afrouxar. O áudio nunca
+          sai do dispositivo.
+        </p>
+        <div class="tags">
+          <span class="tag">Web Audio API</span><span class="tag">YIN</span><span class="tag">Next.js 16</span><span class="tag">105 testes</span>
+        </div>
+        <div class="card-links">
+          <a href="#" data-app="afinador" class="lnk fill" target="_blank" rel="noopener">Acessar app ↗</a>
+          <a href="https://github.com/yurigodoz/Afinador" class="lnk" target="_blank" rel="noopener">Código</a>
         </div>
       </article>
 
@@ -553,6 +574,42 @@ footer{
         </div>
       </details>
 
+      <details class="pj rv" style="--pc:#eab308">
+        <summary><span class="sq"></span>Afinador <small>— áudio no navegador, precisão de 1 cent</small><span class="chev">›</span></summary>
+        <div class="pj-body">
+          <div class="pj-grid">
+            <div class="blk">
+              <h4>O problema</h4>
+              <p>Começou como brincadeira entre amigos. Hoje é o único afinador que uso. Os de celular exigem instalar app, com anúncio e permissão demais — e os gratuitos costumam falhar no baixo: as cordas graves são tão baixas que a maioria erra a nota por uma oitava inteira.</p>
+            </div>
+            <div class="blk">
+              <h4>A solução</h4>
+              <ul>
+                <li>Dedilhe e ele reconhece sozinho qual corda é</li>
+                <li>10 presets, de violão a baixo de 5 cordas</li>
+                <li>Diapasão ajustável e tom de referência</li>
+                <li>Nenhum backend: o áudio nunca sai do aparelho</li>
+              </ul>
+            </div>
+            <div class="blk">
+              <h4>O desafio</h4>
+              <p>Corda grave vibra devagar, e o zumbido da tomada cai bem entre duas cordas do baixo — cortá-lo levaria as cordas junto. Cada instrumento ganhou seu próprio ajuste de escuta e filtro.</p>
+            </div>
+            <div class="blk">
+              <h4>Como sei que está certo</h4>
+              <p>O cálculo roda fora do navegador, então dá para testá-lo com sons gerados por computador: 105 testes garantem acerto dentro de <b>1 cent</b> — diferença que o ouvido não percebe.</p>
+            </div>
+            <div class="blk">
+              <h4>Stack</h4>
+              <div class="stack-row">
+                <span class="tag">Next.js 16</span><span class="tag">React 19</span><span class="tag">Tailwind 4</span>
+                <span class="tag">Web Audio API</span><span class="tag">YIN</span><span class="tag">Sem backend</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </details>
+
       <details class="pj rv" style="--pc:#38bdf8">
         <summary><span class="sq"></span>GlobalAuth <small>— o serviço de auth que sustenta os outros três</small><span class="chev">›</span></summary>
         <div class="pj-body">
@@ -665,7 +722,7 @@ footer{
     <div class="sec-head rv">
       <span class="sec-tag">// processo</span>
       <h2>Como eu trabalho</h2>
-      <p>Um padrão que se repete nos quatro projetos — e que é a razão de eles se parecerem por dentro.</p>
+      <p>Um padrão que se repete em todos os projetos — e que é a razão de eles se parecerem por dentro.</p>
     </div>
     <div class="proc">
       <div class="pcard rv">
@@ -740,6 +797,7 @@ footer{
 // ---- URLs dos apps: troque os valores abaixo pelos domínios reais ----
 const LINKS = {
   luccare:    "https://luccare.godoz.dev.br",
+  afinador:   "https://afinador.godoz.dev.br",
   bandapp:    "https://bandapp.godoz.dev.br",
   agiotapp:   "https://agiotapp.godoz.dev.br",
   linkedin:   "https://www.linkedin.com/in/yurigodoz/"
